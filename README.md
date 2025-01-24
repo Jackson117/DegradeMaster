@@ -1,5 +1,5 @@
 # DegradeMaster
-Source Code of ISMB/ECCB'25 submitted paper "Accurate PROTAC targeted degradation prediction with DegradeMaster"
+Source Code of ISMB/ECCB'25 submitted paper "Accurate PROTAC targeted degradation prediction with DegradeMaster".
 
 ![alt text](https://github.com/Jackson117/DegradeMaster/blob/main/framework.png?raw=true)
 
@@ -51,13 +51,4 @@ python case_study.py
 ```
 
 ### Reference
-```bibtex
-@inproceedings{liu2024bourne,
-  title={Bourne: Bootstrapped self-supervised learning framework for unified graph anomaly detection},
-  author={Liu, Jie and He, Mengting and Shang, Xuequn and Shi, Jieming and Cui, Bin and Yin, Hongzhi},
-  booktitle={2024 IEEE 40th International Conference on Data Engineering (ICDE)},
-  pages={2820--2833},
-  year={2024},
-  organization={IEEE}
-}
-```
+
