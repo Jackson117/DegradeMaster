@@ -99,44 +99,7 @@ def seed_torch(seed):
     return
 
 
-# def split_dataset(json_path, train_ratio):
-#     with open(json_path, 'r') as f:
-#         name_dict = json.load(f)
-#
-#     num_label = 0
-#     for val in name_dict.values():
-#         if val['label'] != -1:
-#             num_label += 1
-#     test_p_size = int(num_label * (1 - train_ratio)/2)
-#     test_n_size = test_p_size
-#     train_indices, test_indices = [], []
-#     labels_l = []
-#     test_p_cnt, test_n_cnt = 0, 0
-#     random.seed(111)    # 112
-#     val = list(name_dict.values())
-#     indx = list(np.arange(len(val)))
-#     random.shuffle(indx)
-#     for idx in indx:
-#         value = val[idx]
-#         if value['label'] == 1 and test_p_cnt < test_p_size:
-#             test_indices.append(int(idx))
-#             test_p_cnt += 1
-#             labels_l.append(value['label'])
-#         elif value['label'] == 0 and test_n_cnt < test_n_size:
-#             test_indices.append(int(idx))
-#             test_n_cnt += 1
-#             labels_l.append(value['label'])
-#         else:
-#             train_indices.append(int(idx))
-#
-#     keys = np.array(list(name_dict.keys()))
-#     dic = {'indices': test_indices, 'labels': labels_l, 'id': keys[test_indices]}
-#     with open('./latent/test_indices.pkl', 'wb') as f:
-#         pkl.dump(dic, f)
-#
-#     return train_indices, test_indices
-
-def split_dataset(json_path, train_ratio):
+def split_dataset(json_path, train_ratio, seed_inpt):
     with open(json_path, 'r') as f:
         name_dict = json.load(f)
 
@@ -149,7 +112,7 @@ def split_dataset(json_path, train_ratio):
     train_indices, test_indices = [], []
     labels_l = []
     test_cnt = 0
-    random.seed(111)    # 112
+    random.seed(seed_inpt)    # 112
     val = list(name_dict.values())
     indx = list(np.arange(len(val)))
     random.shuffle(indx)
@@ -163,9 +126,32 @@ def split_dataset(json_path, train_ratio):
         else:
             train_indices.append(int(idx))
 
+
     keys = np.array(list(name_dict.keys()))
     dic = {'indices': test_indices, 'labels': labels_l, 'id': keys[test_indices]}
     with open('./latent/test_indices.pkl', 'wb') as f:
         pkl.dump(dic, f)
 
-    return train_indices, test_indices
+    duplicate_ids = []
+    duplicate_pairs = set()
+    for idx_test in test_indices:
+        for idx_train in train_indices:
+            value_test = val[idx_test]
+            value_train = val[idx_train]
+            if (value_test['tar_path'] == value_train['tar_path']
+                    and value_test['e3_ligase_path'] == value_train['e3_ligase_path']
+                    and value_test['smiles'] == value_train['smiles']):
+                duplicate_ids.append(idx_test)
+                duplicate_pairs.add((idx_test, idx_train))
+
+    print('Seed', seed_inpt)
+    print('Fold: {}-{}', test_cnt, test_cnt + 1)
+    print('duplicate ids:', duplicate_ids, len(duplicate_ids))
+    print('duplicate pairs:', duplicate_pairs)
+    test_indices_filtered = [x for x in test_indices if x not in duplicate_ids]
+    train_indices_filtered = train_indices + duplicate_ids
+
+    print('train_indices_filtered:', len(train_indices_filtered))
+    print('test_indices_filtered:', len(test_indices_filtered))
+
+    return train_indices_filtered, test_indices_filtered
