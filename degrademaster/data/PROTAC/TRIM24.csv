@@ -1,0 +1,5 @@
+"Compound ID,Target,E3 ligase,Smiles,Warhead,E3 ligand"
+"1,dtag-pocket-alphafold,CRBN_Q96SW2,CC[C@H](C(=O)N1CCCC[C@H]1C(=O)O[C@H](CCC1=CC=C(OC)C(OC)=C1)C1=CC=CC=C1OCC(=O)NCCCCCCOC1=CC=CC2=C1C(=O)N(C1CCC(=O)NC1=O)C2=O)C1=CC(OC)=C(OC)C(OC)=C1,BRD9_Q9H8M2_125_lig_smina_out,CRBN_Q96SW2_3_lig_smina_out"
+"2,nanotag-pocket-alphafold,CRBN_Q96SW2,CCC1=CC(=CC=C1)N(CC)C(=O)CN2C3=CC=CC=C3C=C2C(=O)NC4CCC(CC4)C(=O)NCCCCCCCC(=O)NCCCCNC5=CC=CC6=C5C(=O)N(C6=O)C7CCC(=O)NC7=O,BRD9_Q9H8M2_125_lig_smina_out,CRBN_Q96SW2_3_lig_smina_out"
+"3,halotag-pocket-alphafold,VHL_P40337,CC1=C(SC=N1)C2=CC(=C(C=C2)CNC(=O)[C@@H]3C[C@H](CN3C(=O)[C@H](C(C)C)N4CC5=CC=CC=C5C4=O)O)OCCOCCOCCOCCCCCCCl,BRD9_Q9H8M2_125_lig_smina_out,VHL_P40337_14_lig_smina_out"
+"4,bromotag-pocket-alphafold,VHL_P40337,CC1=C(SC=N1)C2=CC=C(CNC([C@@H]3C[C@@H](O)CN3C([C@H](C(C)(C)C)NC(COCCOCCOCCOC([C@H](CC)[C@H]4C5=NN=C(C)N5C6=C(C(C)=C(C)S6)C(C7=CC=C(Cl)C=C7)=N4)=O)=O)=O)=O)C=C2,BRD9_Q9H8M2_125_lig_smina_out,VHL_P40337_14_lig_smina_out"

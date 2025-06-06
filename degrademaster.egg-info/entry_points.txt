@@ -1,0 +1,2 @@
+[console_scripts]
+degrademaster = degrademaster.main:entry_point

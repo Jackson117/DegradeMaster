@@ -51,4 +51,13 @@ python case_study.py
 ```
 
 ### Reference
-
+```
+@article{liu2025accurate,
+  title={Accurate PROTAC targeted degradation prediction with DegradeMaster},
+  author={Liu, Jie and Roy, Michael and Isbel, Luke and Li, Fuyi},
+  journal={bioRxiv},
+  pages={2025--02},
+  year={2025},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
